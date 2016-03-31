@@ -38,8 +38,8 @@ void Led_Scan(void)
 {
 	static uint8 i = 0;
 	
-   P11 = 1;
+   P0_ENABLE = 1;
 	P0 = (uint8)~(1<<i++);   /* 通过循环点亮每个小灯 */
 	i &= 0x07;
-	P11 = 0;
+	P0_ENABLE = 0;
 }
