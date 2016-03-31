@@ -1,0 +1,79 @@
+C51 COMPILER V9.54   TIMER                                                                 03/28/2016 11:19:40 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE TIMER
+OBJECT MODULE PLACED IN .\Objects\timer.obj
+COMPILER INVOKED BY: D:\MDK5.17A\C51\BIN\C51.EXE DEVICES\TIMER\timer.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\DEVICES\LED;.\D
+                    -EVICES\TIMER;.\DEVICES\SYSTEM;.\DEVICES\NUM_LED) DEBUG OBJECTEXTEND PRINT(.\Listings\timer.lst) TABS(3) OBJECT(.\Objects
+                    -\timer.obj)
+
+line level    source
+
+   1          
+   2          /*****************************************************************************
+   3           **************       大学生电器开发部 -- E.D.D     ***************************
+   4           *****************************************************************************
+   5           *  适用于电器开发部12级学习板，STC12@32M晶振
+   6           *  File name: timer.c
+   7           *  Author: E.D.D
+   8           *  Date: 2016-1-20 
+   9           *  Version: V2.0
+  10           *  Description: 定时器相关函数说明
+  11           *  Copyright (C) E.D.D -- HPU
+  12           *****************************************************************************/
+  13           
+  14          #include "timer.h"
+  15          
+  16          #define LED_GREEN P13      /* 把P13进行宏定义，在文件中P13就可以直接写成LED_GREEN，增加可读性 */
+  17                                     /* 记得把跳线帽调到指定位置 */
+  18          uint32 sys_time = 0;
+  19          uint8 flag = 0;
+  20          
+  21          /**
+  22            *  函数名称：Timer0Init
+  23            *  函数参数：无
+  24            *  函数功能：Timer0 初始化并开中断
+  25            *  日期：2016-1-20
+  26            */
+  27          void Timer0_Init(void)     //1毫秒@32MHz
+  28          {
+  29   1         AUXR |= 0x80;     //定时器时钟1T模式
+  30   1         TMOD &= 0xF0;     //设置定时器模式
+  31   1         TMOD |= 0x01;     //设置定时器模式
+  32   1         TL0 = 0x00;       //设置定时初值         
+  33   1         TH0 = 0x83;       //设置定时初值      课下作业：定时器的初值是怎么算出来的？
+  34   1         TF0 = 0;          //清除TF0标志
+  35   1         
+  36   1         EA = 1;           /* 开总中断 */
+  37   1         ET0 = 1;          /* 开定时器0中断 */
+  38   1         TR0 = 1;          /* 定时器0开始计时 */
+  39   1      }
+  40          
+  41          void Timer0_Interrupt()  interrupt 1
+  42          {  
+  43   1         TL0 = 0x00;    
+  44   1         TH0 = 0x83;    /* 设置定时初值 */
+  45   1         sys_time ++;
+  46   1         if(1000 == sys_time)
+  47   1         {
+  48   2            sys_time = 0;
+  49   2            flag = 1;
+  50   2            LED_GREEN = !LED_GREEN;
+  51   2         }
+  52   1      }
+
+C51 COMPILER V9.54   TIMER                                                                 03/28/2016 11:19:40 PAGE 2   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    141    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      5    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

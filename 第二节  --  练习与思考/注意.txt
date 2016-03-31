@@ -1,0 +1,1 @@
+hex 文件在Objects文件夹中，所以不用新建OUTPUT文件夹  -- keil5
