@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        03/28/2016  11:19:40  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/04/2016  21:20:30  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -59,14 +59,17 @@ SEGMENT
 ?C_C51STARTUP
   +--> ?PR?MAIN?MAIN
   +--> ?C_INITSEG
-BL51 BANKED LINKER/LOCATER V6.22                                                      03/28/2016  11:19:40  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/04/2016  21:20:30  PAGE 2
 
 
 
 ?PR?MAIN?MAIN
-  +--> ?PR?LED_INIT?LED
+  +--> ?PR?NUM_LED_INIT?NUM_LED
   +--> ?PR?TIMER0_INIT?TIMER
-  +--> ?PR?LED_SCAN?LED
+  +--> ?PR?NUM_SHOWSCAN?NUM_LED
+
+?PR?NUM_SHOWSCAN?NUM_LED
+  +--> ?CO?NUM_LED
 
 
 
@@ -116,30 +119,30 @@ SYMBOL TABLE OF MODULE:  .\Objects\TEST (?C_STARTUP)
   D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
   D:00C0H         PUBLIC        P4
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/04/2016  21:20:30  PAGE 3
+
+
   D:00C8H         PUBLIC        P5
   D:00A8H         PUBLIC        IE
   D:00B8H         PUBLIC        IP
-BL51 BANKED LINKER/LOCATER V6.22                                                      03/28/2016  11:19:40  PAGE 3
-
-
   D:00D8H         PUBLIC        CCON
   C:012EH         PUBLIC        main
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
   D:00D0H         PUBLIC        PSW
   -------         PROC          MAIN
-  C:012EH         LINE#         36
-  C:012EH         LINE#         37
-  C:012EH         LINE#         38
-  C:0131H         LINE#         39
-  C:0134H         LINE#         41
-  C:0134H         LINE#         42
-  C:0134H         LINE#         43
-  C:0139H         LINE#         44
-  C:0139H         LINE#         45
-  C:0143H         LINE#         46
-  C:0146H         LINE#         47
-  C:0146H         LINE#         48
+  C:012EH         LINE#         21
+  C:012EH         LINE#         22
+  C:012EH         LINE#         23
+  C:0131H         LINE#         24
+  C:0134H         LINE#         26
+  C:0134H         LINE#         27
+  C:0134H         LINE#         28
+  C:0139H         LINE#         29
+  C:0139H         LINE#         30
+  C:0143H         LINE#         31
+  C:0146H         LINE#         32
+  C:0146H         LINE#         33
   -------         ENDPROC       MAIN
   -------         ENDMOD        MAIN
 
@@ -176,12 +179,12 @@ SYMBOL TABLE OF MODULE:  .\Objects\TEST (?C_STARTUP)
   C:0148H         LINE#         37
   C:0148H         LINE#         38
   C:0148H         LINE#         41
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/04/2016  21:20:30  PAGE 4
+
+
   C:014AH         LINE#         42
   C:015CH         LINE#         43
   C:015FH         LINE#         44
-BL51 BANKED LINKER/LOCATER V6.22                                                      03/28/2016  11:19:40  PAGE 4
-
-
   C:0161H         LINE#         45
   -------         ENDPROC       LED_SCAN
   -------         ENDMOD        LED
@@ -236,12 +239,12 @@ SYMBOL TABLE OF MODULE:  .\Objects\TEST (?C_STARTUP)
   C:00E7H         LINE#         47
   C:00E7H         LINE#         48
   C:00EFH         LINE#         49
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/04/2016  21:20:30  PAGE 5
+
+
   C:00F2H         LINE#         50
   C:00F4H         LINE#         51
   C:00F4H         LINE#         52
-BL51 BANKED LINKER/LOCATER V6.22                                                      03/28/2016  11:19:40  PAGE 5
-
-
   -------         ENDPROC       TIMER0_INTERRUPT
   -------         ENDMOD        TIMER
 
@@ -291,10 +294,13 @@ SYMBOL TABLE OF MODULE:  .\Objects\TEST (?C_STARTUP)
   -------         ENDMOD        ?C?ULCMP
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?NUM_LED_INIT?NUM_LED
+    SEGMENT: ?PR?LED_INIT?LED
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?NUM_SHOWSCAN?NUM_LED
+    SEGMENT: ?PR?LED_SCAN?LED
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/04/2016  21:20:30  PAGE 6
+
 
 Program Size: data=16.0 xdata=0 code=431
 LINK/LOCATE RUN COMPLETE.  2 WARNING(S),  0 ERROR(S)

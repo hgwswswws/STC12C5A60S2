@@ -18,24 +18,9 @@
 
 extern uint8 flag;     /* 外部变量声明，声明时不要出现赋值 */
 
-//void main(void)      /* 此main函数是单个数码管的自加程序 */
-//{
-//	NUM_LED_Init();
-//	Timer0_Init();
-
-//	while(1)
-//	{
-//	   if(1 == flag)
-//		{
-//			flag = !flag;  /* 清除标志位 */
-//		   NUM_ShowScan();
-//		}
-//	}
-//}
-
-void main(void)         /* 此main函数是流水灯的程序 */
+void main(void)      /* 此main函数是单个数码管的自加程序 */
 {
-	Led_Init();
+	NUM_LED_Init();
 	Timer0_Init();
 
 	while(1)
@@ -43,10 +28,25 @@ void main(void)         /* 此main函数是流水灯的程序 */
 	   if(1 == flag)
 		{
 			flag = !flag;  /* 清除标志位 */
-		   Led_Scan();
+		   NUM_ShowScan();
 		}
 	}
 }
+
+//void main(void)         /* 此main函数是流水灯的程序 */
+//{
+//	Led_Init();
+//	Timer0_Init();
+
+//	while(1)
+//	{
+//	   if(1 == flag)
+//		{
+//			flag = !flag;  /* 清除标志位 */
+//		   Led_Scan();
+//		}
+//	}
+//}
 
 /****************   注意事项  **********************/
 /*   两个main函数不能共用,用两个之一将另一个注释  ****/
